@@ -6,7 +6,7 @@ import time
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(13, GPIO.OUT)
+GPIO.setup(26, GPIO.OUT)
 GPIO.setwarnings(False)
 
 def readVoltage(bus):
@@ -50,8 +50,8 @@ while True:
          print ("Battery LOW!!!")
          print ("Shutdown in 5 seconds")
          time.sleep(5)
-         GPIO.output(13, GPIO.HIGH)
+         GPIO.output(26, GPIO.HIGH)
          time.sleep(3)
-         GPIO.output(13, GPIO.LOW)
+         GPIO.output(26, GPIO.LOW)
 
  time.sleep(2)
