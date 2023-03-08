@@ -3,13 +3,13 @@ import RPi.GPIO as GPIO
 import time
 import os
 
-#GPIO.setwarnings(False)
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(6, GPIO.IN)
 GPIO.setup(26, GPIO.OUT)
 
 def my_callback(channel):
-    sleep(30) # 30 second delay to see if it's still a 1 (short power cycle)
+    time.sleep(30) # 30 second delay to see if it's still a 1 (short power cycle)
     if GPIO.input(6):     # if port 6 == 1
         print ("---AC Power Loss OR Power Adapter Failure---")
         print ("Shutdown in 5 seconds")
