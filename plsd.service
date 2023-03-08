@@ -1,0 +1,12 @@
+[Unit]
+Description=Power Loss Shutdown Script
+After=network.target
+
+[Service]
+ExecStart=/home/pi/plsd.py
+Type=simple
+Restart=always
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

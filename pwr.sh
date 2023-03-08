@@ -21,13 +21,13 @@ while [ 1 ]; do
   shutdownSignal=$(cat /sys/class/gpio/gpio$SHUTDOWN/value)
   if [ $shutdownSignal = 0 ]; then
     /bin/sleep 0.2
-  else  
+  else
     pulseStart=$(date +%s%N | cut -b1-13)
     while [ $shutdownSignal = 1 ]; do
       /bin/sleep 0.02
       if [ $(($(date +%s%N | cut -b1-13)-$pulseStart)) -gt $REBOOTPULSEMAXIMUM ]; then
         echo "X728 Shutting down", SHUTDOWN, ", halting Rpi ..."
-        sudo poweroff
+        sudo shutdown -h now
         exit
       fi
       shutdownSignal=$(cat /sys/class/gpio/gpio$SHUTDOWN/value)
