@@ -7,6 +7,13 @@ tldr;
 `sudo raspi-config` 
 enable i2c
 
-`sudo apt-update`
-`sudo apt install -y python3-smbus i2c-tools`
-`sudo reboot`
+```bash
+sudo apt-update
+sudo apt install -y python3-smbus i2c-tools
+
+sudo bash pld.sh
+sudo cp plsd.service /etc/systemd/system/
+sudo systemctl enable plsd.service
+
+sudo reboot
+```
